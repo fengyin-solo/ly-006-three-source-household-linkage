@@ -1,0 +1,175 @@
+{
+  "gate_tests": [
+    "test_outputs.py::test_default_recovers_eight_households",
+    "test_outputs.py::test_default_member_links_use_three_sources",
+    "test_outputs.py::test_population_counts_use_household_roster_sizes"
+  ],
+  "schema_version": 1,
+  "tests": {
+    "test_outputs.py::test_address_normalization_ignores_case_space_and_hyphen": {
+      "priority": "supporting",
+      "rationale": "地址归一化决定跨渠道户摘要能否对齐，错误会漏掉实际同一户并改变覆盖结果。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_ambiguous_household_assignment_is_refused": {
+      "priority": "core",
+      "rationale": "户对唯一性不足时拒绝，避免在多解情况下发布看似确定的人口估计。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_chapman_estimate_rounds_half_up": {
+      "priority": "boundary",
+      "rationale": "Chapman 点估计在精确半值处必须使用 half-up，否则统计口径会偏离题面。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_chapman_estimate_uses_matched_members": {
+      "priority": "boundary",
+      "rationale": "点估计必须使用恢复后的匹配成员数，而不是来源记录数或户数。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_chapman_interval_lower_floors_and_respects_maximum": {
+      "priority": "boundary",
+      "rationale": "区间下界需要向外取整且不低于最大来源规模，错误会发布不可能的总体下限。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_chapman_interval_upper_ceils": {
+      "priority": "boundary",
+      "rationale": "区间上界必须向上取整，错误会截断 Chapman 区间并改变统计结论。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_chapman_variance_uses_unrounded_counts": {
+      "priority": "boundary",
+      "rationale": "方差必须用未舍入成员计数计算，否则区间会因中间舍入产生偏差。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_default_data_source_is_present_and_described": {
+      "priority": "supporting",
+      "rationale": "示例材料和来源说明必须随镜像交付，方便候选在本地复现业务现场。",
+      "weight": 0.03
+    },
+    "test_outputs.py::test_default_unobserved_counts_are_exposed": {
+      "priority": "core",
+      "rationale": "三份来源分别报告未观测成员，才能解释户摘要人数与个体记录数的差异。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_each_source_record_enters_one_slot": {
+      "priority": "core",
+      "rationale": "每条来源记录只能进入一个成员槽，重复或遗漏都会破坏联合恢复口径。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_eight_households_are_accepted_at_cap": {
+      "priority": "boundary",
+      "rationale": "八户是公开合法上界，上限本身必须能够完成恢复而不是被误拒。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_equal_support_twin_tie_uses_canonical_record_order": {
+      "priority": "core",
+      "rationale": "人员支持并列时必须用记录号规范序消除多解，否则同岁槽结果不稳定。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_existing_entry_is_python_runnable": {
+      "priority": "supporting",
+      "rationale": "候选入口必须能按题面命令直接处理示例材料并写出结果文件。",
+      "weight": 0.03
+    },
+    "test_outputs.py::test_household_ages_must_match_exactly": {
+      "priority": "core",
+      "rationale": "年龄数组不一致时不得形成户对，这是户级摘要匹配的必要约束。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_household_and_record_order_does_not_change_result": {
+      "priority": "supporting",
+      "rationale": "输入顺序不能改变规范户和成员顺序，否则统计台账无法稳定复核。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_household_candidate_requires_positive_adjusted_support": {
+      "priority": "supporting",
+      "rationale": "户候选必须具有正调整支持，零支持或负支持不能被当作真实匹配。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_household_uniqueness_gap_is_positive": {
+      "priority": "core",
+      "rationale": "户唯一性差距需要来自逐对禁用后的重解，不能固定写成零或猜测值。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_member_support_sums_pairwise_log_likelihoods": {
+      "priority": "core",
+      "rationale": "成员支持度必须累加已观测记录的两两人员支持，决定同岁槽的唯一解。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_nine_households_are_refused": {
+      "priority": "boundary",
+      "rationale": "九户超过公开合法上限，程序必须拒绝而不是让搜索体量无界增长。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_no_aligned_ab_household_is_refused": {
+      "priority": "core",
+      "rationale": "A/B 没有对齐户时不能发布 Chapman 估计，这是覆盖统计的自然门槛。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_partial_households_keep_single_source_members": {
+      "priority": "core",
+      "rationale": "只有一份来源摘要的户仍须保留成员，不能因未对齐而从总体中消失。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_public_cap_completes_within_limit": {
+      "priority": "boundary",
+      "rationale": "公开上界材料必须在五秒内完成，避免全排列搜索拖垮正常验收。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_record_assignment_uses_global_address_support": {
+      "priority": "core",
+      "rationale": "记录到同岁槽的指派需要全来源地址支持最优，而不能逐条贪心占槽。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_record_slot_requires_matching_age": {
+      "priority": "core",
+      "rationale": "年龄不一致的记录不能注入成员槽，这是成员恢复的基本可行性约束。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_record_slot_requires_positive_address_support": {
+      "priority": "core",
+      "rationale": "记录地址没有正支持时不能强行归入该户，否则会污染成员和总体估计。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_same_age_twin_slots_use_global_support": {
+      "priority": "core",
+      "rationale": "同岁双胞胎槽必须按跨来源人员支持消歧，不能沿用输入顺序。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_seventeen_records_are_refused": {
+      "priority": "boundary",
+      "rationale": "十七条记录超过公开合法上限，程序必须及时拒绝以保持可完成规模。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_sixteen_records_are_accepted_at_cap": {
+      "priority": "boundary",
+      "rationale": "十六条记录是合法上界，候选必须完整分配全部记录而不是截断。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_source_households_are_recovered_from_a_anchor": {
+      "priority": "core",
+      "rationale": "B、C 户号必须通过 A 锚点回填到同一业务户，不能按输入位置拼接。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_unmatched_household_members_enter_chapman_counts": {
+      "priority": "core",
+      "rationale": "未匹配户的全部成员必须进入未匹配计数和 Chapman 分母，不能只看记录。",
+      "weight": 0.036
+    },
+    "test_outputs.py::test_unobserved_member_slots_remain_in_roster": {
+      "priority": "supporting",
+      "rationale": "三侧都没有记录的成员槽仍属于恢复户，删除会改变未观测成员计数。",
+      "weight": 0.026
+    },
+    "test_outputs.py::test_unresolved_age_slots_are_refused": {
+      "priority": "core",
+      "rationale": "记录无法注入任何合法成员槽时必须拒绝，不能发布不完整恢复结果。",
+      "weight": 0.036
+    }
+  },
+  "weight_policy": {
+    "basis": "business_priority",
+    "core_min_share": 0.5,
+    "version": 1
+  }
+}

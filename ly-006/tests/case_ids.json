@@ -1,0 +1,111 @@
+{
+  "test_address_normalization_ignores_case_space_and_hyphen": [
+    "MATCH-01-normalization"
+  ],
+  "test_ambiguous_household_assignment_is_refused": [
+    "HOUSE-01-ambiguity"
+  ],
+  "test_chapman_estimate_rounds_half_up": [
+    "CHAP-06-half-up"
+  ],
+  "test_chapman_estimate_uses_matched_members": [
+    "CHAP-02-estimate"
+  ],
+  "test_chapman_interval_lower_floors_and_respects_maximum": [
+    "CHAP-04-lower"
+  ],
+  "test_chapman_interval_upper_ceils": [
+    "CHAP-05-upper"
+  ],
+  "test_chapman_variance_uses_unrounded_counts": [
+    "CHAP-03-variance"
+  ],
+  "test_default_data_source_is_present_and_described": [
+    "DATA-01-sample"
+  ],
+  "test_default_member_links_use_three_sources": [
+    "MEMBER-01-three-source-link"
+  ],
+  "test_default_recovers_eight_households": [
+    "BASE-01-default-recovery"
+  ],
+  "test_default_unobserved_counts_are_exposed": [
+    "UNOBS-01-source-unobserved"
+  ],
+  "test_each_source_record_enters_one_slot": [
+    "SLOT-05-one-slot"
+  ],
+  "test_eight_households_are_accepted_at_cap": [
+    "SIZE-01-household-cap"
+  ],
+  "test_equal_support_twin_tie_uses_canonical_record_order": [
+    "TWIN-02-canonical-tie",
+    "TWIN-03-tuple-tie",
+    "TWIN-04-minimum-sequence"
+  ],
+  "test_existing_entry_is_python_runnable": [
+    "ENTRY-01-runtime"
+  ],
+  "test_household_ages_must_match_exactly": [
+    "HOUSE-05-age-profile"
+  ],
+  "test_household_and_record_order_does_not_change_result": [
+    "ORDER-01-permutation",
+    "ORDER-02-member-order"
+  ],
+  "test_household_candidate_requires_positive_adjusted_support": [
+    "MATCH-02-positive"
+  ],
+  "test_household_uniqueness_gap_is_positive": [
+    "HOUSE-03-gap"
+  ],
+  "test_member_support_sums_pairwise_log_likelihoods": [
+    "SUPPORT-01-pairwise",
+    "FS-01-llr"
+  ],
+  "test_nine_households_are_refused": [
+    "SIZE-02-household-reject"
+  ],
+  "test_no_aligned_ab_household_is_refused": [
+    "HOUSE-02-no-overlap"
+  ],
+  "test_partial_households_keep_single_source_members": [
+    "HOUSE-07-partial"
+  ],
+  "test_population_counts_use_household_roster_sizes": [
+    "CHAP-01-roster"
+  ],
+  "test_public_cap_completes_within_limit": [
+    "PERF-01-public-cap"
+  ],
+  "test_record_assignment_uses_global_address_support": [
+    "SLOT-04-global-assignment"
+  ],
+  "test_record_slot_requires_matching_age": [
+    "SLOT-02-age-match"
+  ],
+  "test_record_slot_requires_positive_address_support": [
+    "SLOT-03-address-support"
+  ],
+  "test_same_age_twin_slots_use_global_support": [
+    "TWIN-01-global-support"
+  ],
+  "test_seventeen_records_are_refused": [
+    "SIZE-04-record-reject"
+  ],
+  "test_sixteen_records_are_accepted_at_cap": [
+    "SIZE-03-record-cap"
+  ],
+  "test_source_households_are_recovered_from_a_anchor": [
+    "HOUSE-04-anchor"
+  ],
+  "test_unmatched_household_members_enter_chapman_counts": [
+    "HOUSE-06-unmatched"
+  ],
+  "test_unobserved_member_slots_remain_in_roster": [
+    "SLOT-06-empty-slot"
+  ],
+  "test_unresolved_age_slots_are_refused": [
+    "SLOT-01-age-refusal"
+  ]
+}
